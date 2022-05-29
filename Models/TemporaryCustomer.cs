@@ -4,23 +4,23 @@
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Surname { get; set; }
+        public string Surname { get; set; } = string.Empty;
 
-        public string Patronymic { get; set; }
+        public string Patronymic { get; set; } = string.Empty;
 
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = string.Empty;
 
-        public string Country { get; set; }
+        public string Country { get; set; } = string.Empty;
 
-        public string City { get; set; }
+        public string City { get; set; } = string.Empty;
 
-        public string Street { get; set; }
+        public string Street { get; set; } = string.Empty;
 
-        public string Building { get; set; }
+        public string Building { get; set; } = string.Empty;
 
-        public string Flat { get; set; }
+        public string Flat { get; set; } = string.Empty;
 
         public bool IsConfirmed { get; set; }
     }
