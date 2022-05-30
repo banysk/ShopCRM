@@ -14,8 +14,8 @@ namespace ShopCRM.Utils
 
         public string Login(IFormCollection collection)
         {
-            var login = collection.Where(x => x.Key == "login").First().ToString();
-            var password = collection.Where(x => x.Key == "password").First().ToString();
+            var login = collection.Where(x => x.Key == "login").First().Value.ToString();
+            var password = collection.Where(x => x.Key == "password").First().Value.ToString();
 
             List<User> users = _db.Users.Where(x => x.Login == login && x.Password == password).ToList();
 

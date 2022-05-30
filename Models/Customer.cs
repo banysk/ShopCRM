@@ -17,6 +17,8 @@ namespace ShopCRM.Models
 
         public string PhoneNumber { get; set; } = string.Empty;
 
+        public string Index { get; set; } = string.Empty;
+
         public string Country { get; set; } = string.Empty;
 
         public string City { get; set; } = string.Empty;

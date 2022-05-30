@@ -44,6 +44,10 @@ namespace ShopCRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Index")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsConfirmed")
                         .HasColumnType("bit");
 

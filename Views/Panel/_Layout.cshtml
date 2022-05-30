@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     bool IsAuthenticated = 
         (User.Identity) != null ? (User.Identity).IsAuthenticated : false;
 }
@@ -22,10 +23,13 @@
             if (IsAuthenticated)
             {
             <div class="panel__header__label">
-                banysk: admin
+                @{Write(((System.Security.Claims.ClaimsIdentity)User.Identity)?.Claims.Where(c => c.Type == ClaimTypes.Name)
+                   .Select(c => c.Value).SingleOrDefault().ToString());}:
+                @{Write(((System.Security.Claims.ClaimsIdentity)User.Identity)?.Claims.Where(c => c.Type == ClaimTypes.Role)
+                   .Select(c => c.Value).SingleOrDefault().ToString());}
             </div>
             <div class="panel__header__container">
-                <div class="button">
+                <div class="panel__button" onclick="location.href='/Panel/Logout'">
                     Выйти
                 </div>
             </div>
@@ -34,33 +38,33 @@
         </div>
 
         <div class="panel__container">
+            <div class="panel__container__menu">
             @{
                 if (IsAuthenticated)
                 {
-                <div class="panel__container__menu">
                     <div class="group__label">
-                        Данные
+                        Таблицы
                     </div>
                     <ul class="group">
-                        <li class="group__item" onclick="location.href='/Panel/Users'">
-                            Пользователи
+                        <li class="group__item" onclick="location.href='/Panel/Users/1'">
+                            Пользователи [@ViewBag.Metrics.Users]
+                        </li>
+                        <li class="group__item" onclick="location.href='/Panel/Customers/1'">
+                            Клиенты [@ViewBag.Metrics.Customers]
                         </li>
                         <li class="group__item">
-                            Клиенты
+                            Новые клиенты [@ViewBag.Metrics.TemporaryCustomers]
                         </li>
                         <li class="group__item">
-                            Клиенты (Временные)
+                            Товары [@ViewBag.Metrics.Items]
                         </li>
                         <li class="group__item">
-                            Товары
-                        </li>
-                        <li class="group__item">
-                            Заказы
+                            Заказы [@ViewBag.Metrics.Orders]
                         </li>
                     </ul>
-                </div>
                 }
             }
+            </div>
 
             <div class="panel__container__body">
                 @RenderBody()

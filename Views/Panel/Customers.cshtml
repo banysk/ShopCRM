@@ -1,29 +1,29 @@
 ﻿@using ShopCRM.Utils;
 @{
     Layout = "~/Views/Panel/_Layout.cshtml";
-    ViewBag.Title = "Users";
+    ViewBag.Title = "Customers";
 }
-@model List<User>
+@model List<Customer>
 
 <div class="section">
     <div class="table__container">
-        @Html.Raw(Tabler.FromUsers(Model))
+        @Html.Raw(Tabler.FromCustomers(Model))
     </div>
 
     <div class="button__container">
         @{
             if (ViewBag.Page > 1)
             {
-                <div class="panel__button" onclick="location.href='\Panel\Users\@{Write(ViewBag.Page-1);}'">
+                <div class="panel__button" onclick="location.href='\Panel\Customers\@{Write(ViewBag.Page-1);}'">
                     Назад
                 </div>    
             }
         }
 
         @{
-            if (ViewBag.Page * 10 + 1 < ViewBag.Metrics.Users)
+            if (ViewBag.Page * 10 + 1 < ViewBag.Metrics.Customers)
             {
-                <div class="panel__button" onclick="location.href='\Panel\Users\@{Write(ViewBag.Page+1);}'">
+                <div class="panel__button" onclick="location.href='\Panel\Customers\@{Write(ViewBag.Page+1);}'">
                     Вперёд
                 </div>
             }

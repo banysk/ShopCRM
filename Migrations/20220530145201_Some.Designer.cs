@@ -12,8 +12,8 @@ using ShopCRM.Database;
 namespace ShopCRM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220530065702_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220530145201_Some")]
+    partial class Some
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,10 @@ namespace ShopCRM.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Flat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Index")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

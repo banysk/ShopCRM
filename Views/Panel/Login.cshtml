@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Panel/_Layout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div class="section">
+    <div class="section__label">
+        Авторизация
+    </div>
+    <form id="form" class="section__form" asp-action="Login" asp-controller="Panel" method="post">
+        <div class="form__wrapper">
+            <input name="login" type="text" class="section__input" placeholder="Логин" autocomplete="off"/>
+
+            <input name="password" type="password" class="section__input" placeholder="Пароль" autocomplete="off"/>
+        </div>
+    </form>
+
+    <div class="section__button" onClick="document.getElementById('form').submit();">
+        Войти
+    </div>
+</div>
+
+<style>
+    :root {
+        --section--border: #fffffe;
+    }
+
+    .section {
+        margin: 0;
+        padding: var(--block-padding);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        border-radius: 15px;
+        border: 3px solid var(--section--border);
+    }
+
+    .section__label {
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--text-primary);
+
+        margin-bottom: var(--block-margin);
+    }
+
+    .section__button {
+        background: var(--button-background);
+
+        padding: 7px 12px;
+
+        width: auto;
+        height: 32px;
+
+        flex: 0;
+    
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+
+        border-radius: 5px;
+
+        opacity: 0.8;
+
+        margin-top: var(--block-margin);
+    }
+
+    .section__button:hover {
+        opacity: 1.0;
+        cursor: pointer;
+    }
+
+    .section__input {
+        background: var(--button-background);
+
+        margin-top: var(--block-margin);
+        margin-bottom: var(--block-margin);
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 7px 12px;
+
+        width: auto;
+        height: 32px;
+
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+
+        border-radius: 5px;
+
+        opacity: 0.95;
+
+        text-align: center;
+    }
+
+    .section__input::placeholder {
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+    }
+
+    .form__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+</style>
