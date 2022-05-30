@@ -1,8 +1,13 @@
-﻿namespace ShopCRM.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ShopCRM.Models
 {
     public class Item
     {
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
         public string CustomId { get; set; } = string.Empty;
 

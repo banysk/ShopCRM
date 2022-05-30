@@ -119,9 +119,9 @@ body {
 
     padding: var(--block-padding);
     margin-right: var(--block-margin);
+    margin-left: var(--block-margin);
 
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
 
     flex: 0 1 auto;
 }
@@ -153,9 +153,9 @@ body {
 
     padding: var(--block-padding);
     margin-left: var(--block-margin);
+    margin-right: var(--block-margin);
 
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-radius: 15px;
 
     flex: 1 0 auto;
 

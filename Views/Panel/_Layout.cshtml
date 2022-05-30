@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    bool IsAuthenticated = 
+        (User.Identity) != null ? (User.Identity).IsAuthenticated : false;
+}
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -13,6 +18,9 @@
             <div class="panel__header__logo">
                 ShopCRM
             </div>
+        @{
+            if (IsAuthenticated)
+            {
             <div class="panel__header__label">
                 banysk: admin
             </div>
@@ -21,31 +29,38 @@
                     Выйти
                 </div>
             </div>
+            }
+        }
         </div>
 
         <div class="panel__container">
-            <div class="panel__container__menu">
-                <div class="group__label">
-                    Данные
+            @{
+                if (IsAuthenticated)
+                {
+                <div class="panel__container__menu">
+                    <div class="group__label">
+                        Данные
+                    </div>
+                    <ul class="group">
+                        <li class="group__item" onclick="location.href='/Panel/Users'">
+                            Пользователи
+                        </li>
+                        <li class="group__item">
+                            Клиенты
+                        </li>
+                        <li class="group__item">
+                            Клиенты (Временные)
+                        </li>
+                        <li class="group__item">
+                            Товары
+                        </li>
+                        <li class="group__item">
+                            Заказы
+                        </li>
+                    </ul>
                 </div>
-                <ul class="group">
-                    <li class="group__item" onclick="location.href='/Panel/Users'">
-                        Пользователи
-                    </li>
-                    <li class="group__item">
-                        Клиенты
-                    </li>
-                    <li class="group__item">
-                        Клиенты (Временные)
-                    </li>
-                    <li class="group__item">
-                        Товары
-                    </li>
-                    <li class="group__item">
-                        Заказы
-                    </li>
-                </ul>
-            </div>
+                }
+            }
 
             <div class="panel__container__body">
                 @RenderBody()

@@ -1,8 +1,13 @@
-﻿namespace ShopCRM.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ShopCRM.Models
 {
     public class Order
     {
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
         public string Status { get; set; } = string.Empty;
 
@@ -12,7 +17,7 @@
 
         public int CustomerId { get; set; }
 
-        List<string> ItemsId { get; set; } = new List<string>();
+        List<Guid> ItemsId { get; set; } = new List<Guid>();
 
         public float ItemsPrice { get; set; }
 
