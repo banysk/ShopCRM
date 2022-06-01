@@ -52,14 +52,26 @@
                         <li class="group__item" onclick="location.href='/Panel/Customers/1'">
                             Клиенты [@ViewBag.Metrics.Customers]
                         </li>
-                        <li class="group__item">
-                            Новые клиенты [@ViewBag.Metrics.TemporaryCustomers]
-                        </li>
-                        <li class="group__item">
+                        <li class="group__item" onclick="location.href='/Panel/Items/1'">
                             Товары [@ViewBag.Metrics.Items]
                         </li>
-                        <li class="group__item">
+                        <li class="group__item" onclick="location.href='/Panel/Orders/1'">
                             Заказы [@ViewBag.Metrics.Orders]
+                        </li>
+                    </ul>
+
+                    <div class="group__label">
+                        Создание
+                    </div>
+                    <ul class="group">
+                        <li class="group__item" onclick="location.href='/Panel/User/Create'">
+                            Пользователь
+                        </li>
+                        <li class="group__item" onclick="location.href='/Panel/Customer/Create'">
+                            Клиент
+                        </li>
+                        <li class="group__item" onclick="location.href='/Panel/Item/Create'">
+                            Товар
                         </li>
                     </ul>
                 }

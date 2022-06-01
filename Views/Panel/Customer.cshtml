@@ -1,0 +1,195 @@
+﻿@using ShopCRM.Utils;
+@{
+    Layout = "~/Views/Panel/_Layout.cshtml";
+    ViewBag.Title = "Create Customer";
+}
+@model Customer
+
+<div class="section">
+    <div class="section__label">
+        Клиент
+    </div>
+    <form id="form" class="section__form" asp-action="CreateOrUpdateCustomer" asp-controller="Panel" method="post">
+        <input name="guid" type="text" autocomplete="off" value="@Model.Id" style="display: none;"/>
+
+        <div class="form__wrapper">
+            <table class="generated__table">
+                <tr>
+                    <td>Имя</td>
+                    <td>Фамилия</td>
+                    <td>Отчество</td>
+                    <td>Телефон</td>
+                </tr>
+                <tr>
+                    <td><input name="name" type="text" class="section__input" value="@Model.Name" placeholder="Иван" autocomplete="off"/></td>
+                    <td><input name="surname" type="text" class="section__input" value="@Model.Surname" placeholder="Иванов" autocomplete="off"/></td>
+                    <td><input name="patronymic" type="text" class="section__input" value="@Model.Patronymic" placeholder="Иванович" autocomplete="off"/></td>
+                    <td><input name="phonenumber" type="text" class="section__input" value="@Model.PhoneNumber" placeholder="+79999999999" autocomplete="off"/></td>
+                </tr>
+                <tr>
+                    <td>Индекс</td>
+                    <td>Страна</td>
+                    <td>Город</td>
+                    <td>Улица</td>
+                </tr>
+                <tr>
+                    <td><input name="index" type="text" class="section__input" value="@Model.Index" placeholder="000000" autocomplete="off"/></td>
+                    <td><input name="country" type="text" class="section__input" value="@Model.Country" placeholder="Россия" autocomplete="off"/></td>
+                    <td><input name="city" type="text" class="section__input" value="@Model.City" placeholder="Москва" autocomplete="off"/></td>
+                    <td><input name="street" type="text" class="section__input" value="@Model.Street" placeholder="Пушкина" autocomplete="off"/></td>
+                </tr>
+                <tr>
+                    <td>Строение</td>
+                    <td>Квартира</td>
+                    <td>Подтверждено</td>
+                </tr>
+                <tr>
+                    <td><input name="building" type="text" class="section__input" value="@Model.Building" placeholder="26а" autocomplete="off"/></td>
+                    <td><input name="flat" type="text" class="section__input" value="@Model.Flat" placeholder="10" autocomplete="off"/></td>
+                    <td><input name="isconfirmed" type="checkbox" class="section__input" @{if (Model.IsConfirmed) Write("Checked");} autocomplete="off"/></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+    <div class="button__container">
+        @{if (!Model.IsConfirmed && Model.Id != Guid.Empty)
+            {
+                <div class="section__button" onClick="location.href='/Panel/Customer/@Model.Id/Remove'">
+                    Удалить
+                </div>
+            }
+        }
+
+        <div class="section__button" onClick="document.getElementById('form').submit();">
+            Сохранить
+        </div>
+
+        @{if (!Model.IsConfirmed && Model.Id != Guid.Empty)
+            {
+                <div class="section__button" onClick="location.href='/Panel/Customer/@Model.Id/Confirm'">
+                    Подтвердить
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<style>
+    :root {
+        --section--border: #fffffe;
+    }
+
+    .section {
+        margin: 0;
+        padding: var(--block-padding);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        border-radius: 15px;
+        border: 3px solid var(--section--border);
+    }
+
+    .section__label {
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--text-primary);
+
+        margin-bottom: var(--block-margin);
+    }
+
+    .section__button {
+        background: var(--button-background);
+
+        padding: 7px 12px;
+
+        width: auto;
+        height: 32px;
+
+        flex: 0;
+    
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+
+        border-radius: 5px;
+
+        opacity: 0.8;
+
+        margin-top: var(--block-margin);
+    }
+
+    .section__button:hover {
+        opacity: 1.0;
+        cursor: pointer;
+    }
+
+    .section__input {
+        background: var(--button-background);
+
+        margin-top: var(--block-margin);
+        margin-bottom: var(--block-margin);
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 7px 12px;
+
+        width: auto;
+        height: 32px;
+
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+
+        border-radius: 5px;
+
+        opacity: 0.95;
+
+        text-align: center;
+    }
+
+    .section__input::placeholder {
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+    }
+
+    .form__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .section input[type="checkbox"] {
+        width: 30px;
+        height: 30px;
+        background: var(--button-background);
+    }
+
+    .button__container {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        justify-content: space-around;
+
+        width: 100%;
+
+        flex: 1;
+    }
+</style>

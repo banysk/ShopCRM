@@ -14,17 +14,17 @@
         @{
             if (ViewBag.Page > 1)
             {
-                <div class="panel__button" onclick="location.href='\Panel\Users\@{Write(ViewBag.Page-1);}'">
-                    Назад
+                <div class="panel__button" onclick="location.href='/Panel/Users/@{Write(ViewBag.Page-1);}'">
+                    &lt
                 </div>    
             }
         }
 
         @{
-            if (ViewBag.Page * 10 + 1 < ViewBag.Metrics.Users)
+            if (ViewBag.Page * 10 + 1 <= ViewBag.Metrics.Users)
             {
-                <div class="panel__button" onclick="location.href='\Panel\Users\@{Write(ViewBag.Page+1);}'">
-                    Вперёд
+                <div class="panel__button" onclick="location.href='/Panel/Users/@{Write(ViewBag.Page+1);}'">
+                    &gt
                 </div>
             }
         }

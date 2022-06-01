@@ -7,7 +7,7 @@ namespace ShopCRM.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.Empty;
 
         public string Name { get; set; } = string.Empty;
 
@@ -29,6 +29,6 @@ namespace ShopCRM.Models
 
         public string Flat { get; set; } = string.Empty;
 
-        public bool IsConfirmed { get; set; }
+        public bool IsConfirmed { get; set; } = false;
     }
 }

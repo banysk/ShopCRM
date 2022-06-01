@@ -7,7 +7,7 @@ namespace ShopCRM.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.Empty;
 
         public string CustomId { get; set; } = string.Empty;
 
@@ -21,8 +21,8 @@ namespace ShopCRM.Models
 
         public string Stock { get; set; } = string.Empty;
 
-        public bool IsOrdered { get; set; }
+        public bool IsOrdered { get; set; } = false;
 
-        public int OrderId { get; set; }
+        public Guid OrderGuid { get; set; } = Guid.Empty;
     }
 }

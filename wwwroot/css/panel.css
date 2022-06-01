@@ -191,8 +191,15 @@ body {
     align-self: stretch;
 }
 
+.table__container {
+    justify-self: start;
+    align-self: start;
+}
+
 .generated__table {
     border-collapse: collapse;
+    justify-self: start;
+    align-self: start;
 }
 
 .generated__table th,

@@ -7,7 +7,7 @@ namespace ShopCRM.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.Empty;
 
         public string Login { get; set; } = string.Empty;
 

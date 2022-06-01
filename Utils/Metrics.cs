@@ -10,8 +10,6 @@ namespace ShopCRM.Utils
 
         public int Customers { get; set; }
 
-        public int TemporaryCustomers { get; set; }
-
         public int Items { get; set; }
 
         public int Orders { get; set; }
@@ -20,7 +18,6 @@ namespace ShopCRM.Utils
         {
             Users = db.Users.Count();
             Customers = db.Customers.Count();
-            TemporaryCustomers = db.TemporaryCustomers.Count();
             Items = db.Items.Count();
             Orders = db.Orders.Count();
         }

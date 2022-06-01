@@ -8,7 +8,7 @@ namespace ShopCRM.Utils
         {
             return $"<table class=\"generated__table\" cellspacing=\"0\">\n{innerHTML}</table>\n";
         }
-
+        #region user
         public static string FromUsers(List<User> users)
         {
             List<string> heads = new List<string>()
@@ -40,12 +40,13 @@ namespace ShopCRM.Utils
 
             return CreateTable(thead + tbody);
         }
+        #endregion
 
+        #region customers
         public static string FromCustomers(List<Customer> customers)
         {
             List<string> heads = new List<string>()
             {
-                "Guid",
                 "Имя",
                 "Фамилия",
                 "Отчество",
@@ -70,8 +71,7 @@ namespace ShopCRM.Utils
             foreach (Customer customer in customers)
             {
                 tbody +=
-                    "<tr>" +
-                    $"<td>{customer.Id}</td>\n" +
+                    $"<tr onclick=\"location.href='/Panel/Customer/{customer.Id}'\">" +
                     $"<td>{customer.Name}</td>\n" +
                     $"<td>{customer.Surname}</td>\n" +
                     $"<td>{customer.Patronymic}</td>\n" +
@@ -88,5 +88,44 @@ namespace ShopCRM.Utils
 
             return CreateTable(thead + tbody);
         }
+        #endregion
+
+        #region item
+        public static string FromItems(List<Item> items)
+        {
+            List<string> heads = new List<string>()
+            {
+                "Id",
+                "Наименование",
+                "",
+                "Цена",
+                "Склад",
+                "Заказано"
+            };
+            // thead
+            string thead = "";
+            foreach (string head in heads)
+            {
+                thead += $"<th>{head}</th>\n";
+            }
+            thead = $"<tr>\n{thead}</tr\n>";
+            // tbody
+            string tbody = "";
+            foreach (Item item in items)
+            {
+                tbody +=
+                    $"<tr onclick=\"location.href='/Panel/Item/{item.Id}'\">" +
+                    $"<td>{item.CustomId}</td>\n" +
+                    $"<td>{item.Name}</td>\n" +
+                    $"<td class=\"img\"><img src=\"{item.ImageLink}\"/></td>\n" +
+                    $"<td>{item.Price}</td>\n" +
+                    $"<td>{item.Stock}</td>\n" +
+                    $"<td>{item.IsOrdered}</td>\n" +
+                    "</tr>\n";
+            }
+
+            return CreateTable(thead + tbody);
+        }
+        #endregion
     }
 }

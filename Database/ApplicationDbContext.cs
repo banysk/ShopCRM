@@ -11,8 +11,6 @@ namespace ShopCRM.Database
 
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<TemporaryCustomer> TemporaryCustomers { get; set; }
-
         public DbSet<Item> Items { get; set; }
 
         public DbSet<Order> Orders { get; set; }
