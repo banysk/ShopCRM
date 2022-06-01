@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ShopCRM.Utils;
 @{
+    Layout = "~/Views/Panel/_Layout.cshtml";
+    ViewBag.Title = "Orders";
 }
+@model List<Order>
+
+<div class="section">
+    <div class="table__container">
+        @Html.Raw(Tabler.FromOrders(Model))
+    </div>
+
+    <div class="button__container">
+        @{
+            if (ViewBag.Page > 1)
+            {
+                <div class="panel__button" onclick="location.href='/Panel/Orders/@{Write(ViewBag.Page-1);}'">
+                    &lt
+                </div>    
+            }
+        }
+
+        @{
+            if (ViewBag.Page * 10 + 1 <= ViewBag.Metrics.Customers)
+            {
+                <div class="panel__button" onclick="location.href='/Panel/Orders/@{Write(ViewBag.Page+1);}'">
+                    &gt
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<style>
+    .section {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+
+        overflow: hidden;
+    }
+
+    .button__container {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        justify-content: center;
+
+        flex: 1;
+    }
+</style>

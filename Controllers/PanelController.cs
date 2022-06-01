@@ -335,6 +335,9 @@ namespace ShopCRM.Controllers
         #endregion
 
         #region order
+        /// <summary>
+        /// Страница заказов
+        /// </summary>
         [HttpGet]
         [Route("Panel/Orders/{page}")]
         [Authorize(Roles = "admin, creator")]
@@ -362,6 +365,43 @@ namespace ShopCRM.Controllers
 
                 return View(selectedOrders);
             }
+        }
+
+        /// <summary>
+        /// Страница заказа
+        /// </summary>
+        [HttpGet]
+        [Route("Panel/Item/{guid}")]
+        [Authorize(Roles = "admin, creator")]
+        public IActionResult Order(Guid guid)
+        {
+            ViewBag.Metrics = new Metrics(_db);
+            Order order = _db.Orders.Where(x => x.Id == guid).First();
+            return View("Order", order);
+        }
+
+        /// <summary>
+        /// Страница создания/редактирования товара
+        /// </summary>
+        [HttpGet]
+        [Route("Panel/Order/Create")]
+        [Authorize(Roles = "admin, creator")]
+        public IActionResult CreateOrder()
+        {
+            ViewBag.Metrics = new Metrics(_db);
+            return View("Order", new Order());
+        }
+
+        /// <summary>
+        /// Метод создания/редактирования
+        /// </summary>
+        [HttpPost]
+        [Route("Panel/Item/Create")]
+        [Authorize(Roles = "admin, creator")]
+        public IActionResult CreateOrUpdateOrder(IFormCollection collection)
+        {
+            //_dataHandler.CreateOrUpdateOrder(collection);
+            return Redirect("/Panel/Orders/1");
         }
         #endregion
     }

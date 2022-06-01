@@ -127,5 +127,53 @@ namespace ShopCRM.Utils
             return CreateTable(thead + tbody);
         }
         #endregion
+
+        #region order
+        public static string FromOrders(List<Order> orders)
+        {
+            List<string> heads = new List<string>()
+            {
+                "Статус",
+                "Создан",
+                "Обновлен",
+                "Стоимость",
+                "Получено",
+                "Служба",
+                "Тип",
+                "№",
+                "Стоимость",
+                "Получено"
+
+            };
+            // thead
+            string thead = "";
+            foreach (string head in heads)
+            {
+                thead += $"<th>{head}</th>\n";
+            }
+            thead = $"<tr>\n{thead}</tr\n>";
+            // tbody
+            string tbody = "";
+            foreach (Order order in orders)
+            {
+                tbody +=
+                    $"<tr onclick=\"location.href='/Panel/Order/{order.Id}'\">" +
+                    $"<td>{order.Id}</td>\n" +
+                    $"<td>{order.Status}</td>\n" +
+                    $"<td>{order.CreatedDate}</td>\n" +
+                    $"<td>{order.UpdatedDate}</td>\n" +
+                    $"<td>{order.ItemsPrice}</td>\n" +
+                    $"<td>{order.ItemsPaid}</td>\n" +
+                    $"<td>{order.DeliveryService}</td>\n" +
+                    $"<td>{order.DeliveryType}</td>\n" +
+                    $"<td>{order.TrackNumber}</td>\n" +
+                    $"<td>{order.DeliveryPrice}</td>\n" +
+                    $"<td>{order.DeliveryPaid}</td>\n" +
+                    "</tr>\n";
+            }
+
+            return CreateTable(thead + tbody);
+        }
+        #endregion
     }
 }

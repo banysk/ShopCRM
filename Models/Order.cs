@@ -15,7 +15,7 @@ namespace ShopCRM.Models
 
         public DateTime UpdatedDate { get; set; }
 
-        public int CustomerId { get; set; }
+        public Guid CustomerGuid { get; set; }
 
         List<Guid> ItemsId { get; set; } = new List<Guid>();
 

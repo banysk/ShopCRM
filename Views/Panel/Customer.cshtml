@@ -65,6 +65,14 @@
             Сохранить
         </div>
 
+        @{if (Model.Id != Guid.Empty)
+            {
+                <div class="section__button" onClick="location.href='/Panel/Order/Create/@Model.Id'">
+                    Заказ
+                </div>
+            }
+        }
+
         @{if (!Model.IsConfirmed && Model.Id != Guid.Empty)
             {
                 <div class="section__button" onClick="location.href='/Panel/Customer/@Model.Id/Confirm'">
